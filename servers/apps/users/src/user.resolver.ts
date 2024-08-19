@@ -1,10 +1,15 @@
 import { Args, Mutation, Resolver, Query, Context } from '@nestjs/graphql';
 import { UsersService } from './users.service';
-import { ActivationResponse, RegisterResponse } from './types/user.types';
+import {
+  ActivationResponse,
+  LoginResponse,
+  RegisterResponse,
+} from './types/user.types';
 import { ActivationDto, RegisterDto } from './dto/user.dto';
-import { BadRequestException } from '@nestjs/common';
+import { BadRequestException, UseGuards } from '@nestjs/common';
 import { User } from './entities/user.entity';
 import { Response } from 'express';
+import { AuthGuard } from './guards/auth.guard';
 
 @Resolver('User')
 // @useFilters
@@ -28,12 +33,26 @@ export class UsersResolver {
     return { activation_token };
   }
 
+  @Mutation(() => LoginResponse)
+  async Login(
+    @Args('email') email: string,
+    @Args('password') password: string,
+  ): Promise<LoginResponse> {
+    return await this.userService.login({ email, password });
+  }
+
   @Mutation(() => ActivationResponse)
   async activateUser(
     @Args('activationDto') activationDto: ActivationDto,
     @Context() context: { res: Response },
   ): Promise<ActivationResponse> {
     return await this.userService.activateUser(activationDto, context.res);
+  }
+
+  @Query(() => LoginResponse)
+  @UseGuards(AuthGuard)
+  async getLoggedInUser(@Context() context: { req: Request }) {
+    return await this.userService.getLoggedInUser(context.req);
   }
 
   @Query(() => [User])
