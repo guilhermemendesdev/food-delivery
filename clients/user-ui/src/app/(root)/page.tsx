@@ -1,8 +1,11 @@
+import HomeScreen from '@/src/screens/HomeScreen'
 import React from 'react'
 
 const Page = () => {
   return (
-    <div>Page</div>
+    <div>
+      <HomeScreen/>
+    </div>
   )
 }
 
