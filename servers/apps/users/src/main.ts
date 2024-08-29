@@ -9,6 +9,12 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'servers/email-templates'));
   app.setViewEngine('ejs');
-  await app.listen(3001);
+  // Configuração do CORS
+  app.enableCors({
+    origin: '*', // ou use '*' para permitir todas as origens
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
+  await app.listen(4001);
 }
 bootstrap();
