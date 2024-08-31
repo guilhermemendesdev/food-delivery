@@ -1,5 +1,5 @@
-import styles from '../../../utils/styles';
-import { ACTIVATE_USER } from '../../../graphql/actions/activation.action';
+import styles from '@/src/utils/style';
+import { ACTIVATE_USER } from '../../graphql/actions/activation.action';
 import { useMutation } from '@apollo/client';
 import { FC, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
