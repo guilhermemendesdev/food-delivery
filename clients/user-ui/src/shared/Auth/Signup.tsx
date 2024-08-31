@@ -47,9 +47,13 @@ const Signup = ({
       const response = await registerUserMutation({
         variables: data,
       });
-      localStorage.setItem('activation_token', response.data.activation_token);
+      localStorage.setItem(
+        'activation_token',
+        response.data.register.activation_token
+      );
       toast.success('Please check your email to activate your account!');
       reset();
+      setActiveState('Verification');
     } catch (error: any) {
       toast.error(error.message);
     }
