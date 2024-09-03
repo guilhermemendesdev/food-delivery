@@ -7,6 +7,7 @@ export class TokenSender {
     private readonly config: ConfigService,
     private readonly jwt: JwtService,
   ) {}
+
   public sendToken(user: User) {
     const accessToken = this.jwt.sign(
       {
@@ -14,6 +15,7 @@ export class TokenSender {
       },
       {
         secret: this.config.get<string>('ACCESS_TOKEN_SECRET'),
+        expiresIn: '1m',
       },
     );
 
@@ -26,7 +28,6 @@ export class TokenSender {
         expiresIn: '3d',
       },
     );
-
     return { user, accessToken, refreshToken };
   }
 }
