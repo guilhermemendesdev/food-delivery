@@ -24,18 +24,14 @@ O projeto é baseado em uma arquitetura de microserviços e faz uso das seguinte
 
 Este projeto é aberto a contribuições. Se você está interessado em ajudar a melhorar a aplicação, modificar aspectos ou colaborar em novos recursos, sua contribuição será muito bem-vinda. Não é necessário ter experiência prévia em desenvolvimento de microserviços; habilidades em frontend ou outras áreas também são valiosas.
 
-## Suporte
-
-Se você aprecia o projeto e deseja apoiar meu trabalho, considere fazer uma doação. Cada contribuição ajuda a manter o projeto e a desenvolver novos recursos. Você pode fazer uma doação a partir de $1. [Clique aqui para doar](#).
-
 ## Como Começar
 
 Para começar a trabalhar com o projeto localmente, siga estes passos:
 
 1. **Clone o Repositório**:
     ```bash
-    git clone https://github.com/seu-usuario/nome-do-repositorio.git
-    cd nome-do-repositorio
+    git clone https://github.com/guilhermemendesdev/food-delivery.git
+    cd food-delivery
     ```
 
 2. **Instale as Dependências**:
@@ -51,6 +47,6 @@ Para começar a trabalhar com o projeto localmente, siga estes passos:
     npm run start
     ```
 
-Para mais detalhes sobre como contribuir ou qualquer outra informação, consulte a [documentação](#) ou entre em contato.
+Para mais detalhes sobre como contribuir ou qualquer outra informação, entre em contato.
 
 Obrigado pelo interesse no meu projeto!
