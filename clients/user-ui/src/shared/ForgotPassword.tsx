@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
 import { useMutation } from '@apollo/client';
 import { ACTIVATE_USER } from '../graphql/actions/activation.action';
+import { FORGOT_PASSWORD } from '../graphql/actions/forgot-password.action';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -17,7 +18,7 @@ const ForgotPassword = ({
 }: {
   setActiveState: (e: string) => void;
 }) => {
-  const [forgotPassword, { loading }] = useMutation(ACTIVATE_USER);
+  const [forgotPassword, { loading }] = useMutation(FORGOT_PASSWORD);
 
   const {
     register,
@@ -39,7 +40,6 @@ const ForgotPassword = ({
       reset();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log(error);
       toast.error(error.message);
     }
   };
@@ -64,7 +64,7 @@ const ForgotPassword = ({
         <br />
         <input
           type="submit"
-          value="Submit"
+          value={loading ? 'Submitting...' : 'Submit'}
           disabled={isSubmitting || loading}
           className={`${styles.button} mt-3`}
         />
